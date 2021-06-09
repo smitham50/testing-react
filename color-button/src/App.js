@@ -10,14 +10,23 @@ function App() {
     setButtonColor(newButtonColor);
   }
 
-  function toggleButtonDisable() {
-    setButtonDisabled(!buttonDisabled);
-  }
-
   return (
     <div>
-      <button disabled={buttonDisabled} onClick={changeBackground} style={{ backgroundColor: buttonColor, color: 'white' }}>Change to {newButtonColor}</button>
-      <input onChange={toggleButtonDisable} type="checkbox" name="checkbox" />
+      <button 
+        disabled={buttonDisabled}
+        onClick={changeBackground} 
+        style={{ backgroundColor: buttonColor, color: 'white' }}
+      >
+        Change to {newButtonColor}
+      </button>
+      <input 
+        onChange={(e) => setButtonDisabled(e.target.checked)}
+        defaultChecked={buttonDisabled}
+        aria-checked={buttonDisabled}
+        type="checkbox" 
+        id="disable-button-checkbox" 
+      />
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
 }
